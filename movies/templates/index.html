@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Catálogo de Películas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .movie-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .movie-list li {
+            margin-bottom: 20px;
+        }
+        
+        .movie-poster {
+            width: 100px;
+            height: 150px;
+            margin-right: 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .movie-info {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .movie-description {
+            font-size: 16px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Catálogo de Películas</h1>
+        <ul class="movie-list">
+            {% for movie in movies %}
+                <li>
+                    <div class="movie-info">
+                        <h2>{{ movie.title }}</h2>
+                        <p>Año de estreno: {{ movie.year }}</p>
+                    </div>
+                    <div class="movie-description">
+                        <p>{{ movie.description }}</p>
+                    </div>
+                    <p><a href="{% url 'movies:movie_detail' movie.pk %}">Ver detalles</a></p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
